@@ -1,0 +1,83 @@
+[data-menu="mobile"] {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .js [data-menu="mobile"] {
+    display: flex;
+    background-color: #222;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 3000;
+  }
+
+  .sobre::after {
+    content: none;
+  }
+
+  .js [data-menu="mobile"]::before {
+    content: "";
+    display: inline-block;
+    margin-right: 4px;
+    width: 12px;
+    height: 2px;
+    background-color: white;
+    box-shadow: 0px -5px white, 0px 5px white;
+    transition: all 0.5s;
+  }
+
+  .js [data-menu="mobile"].ativo::before {
+    position: relative;
+    top: 0px;
+    transform: rotate(90deg);
+    transition: all 0.5s;
+  }
+
+  .js ul[data-menu="lista"] {
+    display: none;
+    position: absolute;
+    background-color: #fb5;
+    max-width: 160px;
+    z-index: 2000;
+    top: 0px;
+    padding: 60px 0 20px 0;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+    animation: display 0.5s;
+    min-width: 180px;
+  }
+  .js ul[data-menu="lista"].ativo {
+    display: block;
+    animation: aparece 0.5s forwards;
+  }
+
+  [data-dropmenu] #dropmenu {
+    display: block;
+    animation: ativamenu 0.5s forwards;
+  }
+
+  @keyframes aparece {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -30px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0px, 0);
+    }
+  }
+
+  .js #dropmenu {
+    position: static;
+    border: none;
+    transition: max-height 0.5s;
+  }
+}

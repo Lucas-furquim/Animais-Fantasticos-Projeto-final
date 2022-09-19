@@ -1,0 +1,27 @@
+import substituiJs from "./modulos/trocajs.js";
+import addData from "./modulos/dataset.js";
+import scroll from "./modulos/scroll-suave.js";
+import anima from "./modulos/anima-scroll.js";
+import Accordion from "./modulos/accordion.js";
+import imagens from "./modulos/imagens.js";
+import ativar from "./modulos/modal.js";
+import toltip from "./modulos/toltip.js";
+import dropMenu from "./modulos/dropmenu.js";
+import mobile from "./modulos/mobile.js";
+import numeros from "./modulos/numeros.js";
+import funcionamento from "./modulos/tempo.js";
+import compraBitcoin from "./modulos/bitcoin.js";
+
+substituiJs();
+addData();
+imagens();
+Accordion();
+anima();
+scroll();
+ativar();
+toltip();
+dropMenu();
+mobile();
+numeros();
+funcionamento();
+compraBitcoin();

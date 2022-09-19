@@ -1,0 +1,14 @@
+.dados li:last-child::after {
+  content: "";
+  display: inline-block;
+  margin-left: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.dados li.ativo:last-child::after {
+  background-color: rgb(21, 223, 21);
+}
