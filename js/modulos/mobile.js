@@ -5,7 +5,7 @@ export default function mobile() {
   let x = 0;
 
   btn.addEventListener("click", () => {
-    mobile.classList.toggle("ativo");
+    RespMobile.classList.toggle("ativo");
     btn.classList.toggle("ativo");
   });
 

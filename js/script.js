@@ -12,7 +12,7 @@ import numeros from "./modulos/numeros.js";
 import funcionamento from "./modulos/tempo.js";
 import compraBitcoin from "./modulos/bitcoin.js";
 
-const scrollSuave = new ScrollSuave("[data-atributes='js-menu'] a[href^='#']");
+const scrollSuave = new ScrollSuave("a[href^='#']");
 scrollSuave.init();
 
 substituiJs();
