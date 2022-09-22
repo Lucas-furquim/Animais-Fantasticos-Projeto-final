@@ -12,18 +12,20 @@ import numeros from "./modulos/numeros.js";
 import funcionamento from "./modulos/tempo.js";
 import compraBitcoin from "./modulos/bitcoin.js";
 
+addData();
+substituiJs();
 const scrollSuave = new ScrollSuave("a[href^='#']");
 scrollSuave.init();
 
-substituiJs();
-addData();
-imagens();
-Accordion();
-anima();
+const accordion = new Accordion("[data-atributes='js-faq-lista'] dt");
+accordion.init();
+
 ativar();
-toltip();
-dropMenu();
-mobile();
-numeros();
 funcionamento();
 compraBitcoin();
+numeros();
+mobile();
+dropMenu();
+toltip();
+imagens();
+anima();
