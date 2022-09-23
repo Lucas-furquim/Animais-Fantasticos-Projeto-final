@@ -3,7 +3,7 @@ import addData from "./modulos/dataset.js";
 import ScrollSuave from "./modulos/scroll-suave.js";
 import anima from "./modulos/anima-scroll.js";
 import Accordion from "./modulos/accordion.js";
-import imagens from "./modulos/imagens.js";
+import Tabnav from "./modulos/tabnav.js";
 import ativar from "./modulos/modal.js";
 import toltip from "./modulos/toltip.js";
 import dropMenu from "./modulos/dropmenu.js";
@@ -20,6 +20,12 @@ scrollSuave.init();
 const accordion = new Accordion("[data-atributes='js-faq-lista'] dt");
 accordion.init();
 
+const tabnave = new Tabnav(
+  "[data-atributes='js-tabmenu'] li",
+  "[data-atributes='js-desc'] section"
+);
+tabnave.init();
+
 ativar();
 funcionamento();
 compraBitcoin();
@@ -27,5 +33,4 @@ numeros();
 mobile();
 dropMenu();
 toltip();
-imagens();
 anima();
