@@ -31,17 +31,16 @@ export default class Modal {
     }
   }
 
-  // entrou(e) {
-  // continua amanhã
-  //   e.preventDefault();
-  //   console.log(window);
-  // }
+  entrou(e) {
+    e.preventDefault();
+    window.location.reload();
+  }
 
   addEvents() {
     this.login.addEventListener("click", this.EventAbremodal);
     this.fechar.addEventListener("click", this.EventAbremodal);
     this.container.addEventListener("click", this.fechaTela);
-    // this.entrar.addEventListener("click", this.entrou);
+    this.entrar.addEventListener("click", this.entrou);
   }
 
   init() {
