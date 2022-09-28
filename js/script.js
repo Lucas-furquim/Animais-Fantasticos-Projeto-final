@@ -4,7 +4,7 @@ import ScrollSuave from "./modulos/scroll-suave.js";
 import anima from "./modulos/anima-scroll.js";
 import Accordion from "./modulos/accordion.js";
 import Tabnav from "./modulos/tabnav.js";
-import ativar from "./modulos/modal.js";
+import Modal from "./modulos/modal.js";
 import toltip from "./modulos/toltip.js";
 import dropMenu from "./modulos/dropmenu.js";
 import mobile from "./modulos/mobile.js";
@@ -26,11 +26,18 @@ const tabnave = new Tabnav(
 );
 tabnave.init();
 
-ativar();
+const modal = new Modal(
+  "[data-login='login']",
+  "[data-modal='fechar']",
+  '[data-modal="container"',
+  '[data-modal="entrar"]'
+);
+modal.init();
+
 funcionamento();
 compraBitcoin();
-numeros();
 mobile();
+numeros();
 dropMenu();
 toltip();
 anima();
