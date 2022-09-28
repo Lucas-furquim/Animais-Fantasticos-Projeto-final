@@ -1,27 +1,52 @@
-export default function ativar() {
-  const login = document.querySelector("[data-login='login']");
-  const fechar = document.querySelector("[data-modal='fechar']");
-  const container = document.querySelector('[data-modal="container"');
-  const entra = document.querySelector('[data-modal="entrar"]');
+export default class Modal {
+  constructor(login, fechar, container, entrar) {
+    this.login = document.querySelector(login);
+    this.fechar = document.querySelector(fechar);
+    this.container = document.querySelector(container);
+    this.entrar = document.querySelector(entrar);
 
-  function abrirModal(event) {
+    // brind this
+    this.EventAbremodal = this.EventAbremodal.bind(this);
+    this.fechaTela = this.fechaTela.bind(this);
+    this.entrou = this.entrou.bind(this);
+  }
+
+  abrirModal() {
+    this.container.classList.toggle("ativo");
+  }
+
+  EventAbremodal(event) {
     event.preventDefault();
-    container.classList.add("ativo");
+    this.abrirModal();
   }
 
-  function fechaModal() {
-    container.classList.remove("ativo");
+  fechaModal() {
+    this.container.classList.remove("ativo");
   }
 
-  function fechaTela(tela) {
+  fechaTela(tela) {
     const veri = tela.target.dataset.modal;
     if (veri === "container") {
-      fechaModal();
+      this.fechaModal();
     }
   }
-  if (login && fechar && container && entra) {
-    login.addEventListener("click", abrirModal);
-    fechar.addEventListener("click", fechaModal);
-    container.addEventListener("click", fechaTela);
+
+  entrou(e) {
+    e.preventDefault();
+    window.location.reload();
+  }
+
+  addEvents() {
+    this.login.addEventListener("click", this.EventAbremodal);
+    this.fechar.addEventListener("click", this.EventAbremodal);
+    this.container.addEventListener("click", this.fechaTela);
+    this.entrar.addEventListener("click", this.entrou);
+  }
+
+  init() {
+    if (this.login && this.fechar && this.container && this.entrar) {
+      this.addEvents();
+    }
+    return this;
   }
 }

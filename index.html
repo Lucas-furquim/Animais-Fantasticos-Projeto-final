@@ -11,6 +11,7 @@
 
   <script>document.documentElement.classList.add('js')</script>
 </head>
++
 
 <body>
   <div class="grid-container">
@@ -182,9 +183,9 @@
       <button data-modal="fechar" class="fechar">X</button>
       <form action="">
         <label for="email">Email</label>
-        <input type="text" name="texto" id="texto" for="email">
+        <input type="text" name="texto" id="texto" for="email" required>
         <label for="senha">Senha</label>
-        <input type="password" name="senha" id="senha" for="senha">
+        <input type="password" name="senha" id="senha" for="senha" required>
 
         <button type="submit" data-modal="entrar" class="entrar">Entrar</button>
       </form>
