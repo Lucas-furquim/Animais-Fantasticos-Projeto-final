@@ -1,33 +1,60 @@
-export default function toltip() {
-  const tolltip = document.querySelectorAll("[data-toltip]");
-
-  function movimento(criaDiv) {
-    window.addEventListener("mousemove", (e) => {
-      criaDiv.style.top = e.pageY + 15 + "px";
-      criaDiv.style.left = e.pageX + 15 + "px";
-    });
+export default class toltip {
+  constructor(tolltip) {
+    this.tolltip = document.querySelectorAll(tolltip);
   }
 
-  function criaTooltip(element) {
+  movimento(criaDiv) {
+    if (window.innerWidth < 700) {
+      window.addEventListener("mousemove", (e) => {
+        const { left } = criaDiv.style;
+        if (+left.split("px").join("") < 510) {
+          criaDiv.style.top = e.pageY + 15 + "px";
+          criaDiv.style.left = e.pageX + 15 + "px";
+        } else {
+          criaDiv.style.top = e.pageY + 15 + "px";
+          criaDiv.style.right = e.pageX + 15 + "px";
+        }
+      });
+    } else {
+      window.addEventListener("mousemove", (e) => {
+        criaDiv.style.top = e.pageY + 15 + "px";
+        criaDiv.style.left = e.pageX + 15 + "px";
+      });
+    }
+  }
+
+  criaTooltip(element) {
     const criaDiv = document.createElement("div");
     const texto = element.getAttribute("aria-label");
     criaDiv.classList.add("tooltip");
     criaDiv.innerText = texto;
     document.body.appendChild(criaDiv);
-    movimento(criaDiv);
+    this.movimento(criaDiv);
     return criaDiv;
   }
 
-  tolltip.forEach((item) => {
-    item.addEventListener("mouseover", (e) => {
-      criaTooltip(e.currentTarget);
+  AtivaToltip() {
+    this.tolltip.forEach((item) => {
+      item.addEventListener("mouseover", (e) => {
+        this.criaTooltip(e.currentTarget);
+      });
     });
-  });
+  }
 
-  tolltip.forEach((item) => {
-    item.addEventListener("mouseleave", () => {
-      const tooltip = document.querySelector(".tooltip");
-      document.body.removeChild(tooltip);
+  criaCaixa() {
+    this.tolltip.forEach((item) => {
+      item.addEventListener("mouseleave", () => {
+        const tooltip = document.querySelector(".tooltip");
+        document.body.removeChild(tooltip);
+      });
     });
-  });
+  }
+
+  init() {
+    if (this.tolltip) {
+      this.AtivaToltip();
+      this.criaCaixa();
+    }
+    return this;
+  }
 }

@@ -5,7 +5,7 @@ import anima from "./modulos/anima-scroll.js";
 import Accordion from "./modulos/accordion.js";
 import Tabnav from "./modulos/tabnav.js";
 import Modal from "./modulos/modal.js";
-import toltip from "./modulos/toltip.js";
+import Toltip from "./modulos/toltip.js";
 import dropMenu from "./modulos/dropmenu.js";
 import mobile from "./modulos/mobile.js";
 import numeros from "./modulos/numeros.js";
@@ -34,10 +34,12 @@ const modal = new Modal(
 );
 modal.init();
 
+const toltip = new Toltip("[data-toltip]");
+toltip.init();
+
 funcionamento();
 compraBitcoin();
 mobile();
 numeros();
 dropMenu();
-toltip();
 anima();
