@@ -6,13 +6,12 @@ export default class toltip {
   movimento(criaDiv) {
     if (window.innerWidth < 700) {
       window.addEventListener("mousemove", (e) => {
-        const { left } = criaDiv.style;
-        if (+left.split("px").join("") < 510) {
+        if (e.pageX < 510) {
           criaDiv.style.top = e.pageY + 15 + "px";
           criaDiv.style.left = e.pageX + 15 + "px";
         } else {
+          criaDiv.style.left = e.pageX - 170 + "px";
           criaDiv.style.top = e.pageY + 15 + "px";
-          criaDiv.style.right = e.pageX + 15 + "px";
         }
       });
     } else {
