@@ -8,7 +8,7 @@ import Modal from "./modulos/modal.js";
 import Toltip from "./modulos/toltip.js";
 import dropMenu from "./modulos/dropmenu.js";
 import mobile from "./modulos/mobile.js";
-import numeros from "./modulos/numeros.js";
+import Numeros from "./modulos/numeros.js";
 import funcionamento from "./modulos/tempo.js";
 import compraBitcoin from "./modulos/bitcoin.js";
 
@@ -40,6 +40,10 @@ toltip.init();
 funcionamento();
 compraBitcoin();
 mobile();
-numeros();
+
+// Numeros();
+const numero = new Numeros(".numeros", "[data-numero]", "ativo");
+numero.init();
+
 dropMenu();
 anima();

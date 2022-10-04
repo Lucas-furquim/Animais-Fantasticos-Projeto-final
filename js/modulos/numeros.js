@@ -1,34 +1,78 @@
-export default function numeros() {}
+export default class numeros {
+  constructor(sectionTarget, numero, ObserveClass) {
+    this.section = document.querySelector(sectionTarget);
+    this.numeros = document.querySelectorAll(numero);
+    this.ObserveClass = ObserveClass;
+  }
 
-const sectionTarget = document.querySelector(".numeros");
-function animaNumero() {
-  const numero = document.querySelectorAll("[data-numero]");
+  animaNumero() {
+    console.log(this.numeros);
+    this.numeros.forEach((item) => {
+      const valor = +item.innerText;
 
-  numero.forEach((item) => {
-    const valor = +item.innerText;
+      let start = 0;
+      const timer = setInterval(() => {
+        const divide = Math.floor(valor / 100);
+        start += divide;
+        item.innerText = start;
+        if (start > valor) {
+          item.innerText = item.innerHTML;
+          clearInterval(timer);
+        }
+      }, 30 * Math.random());
+    });
+  }
 
-    let start = 0;
-    const timer = setInterval(() => {
-      const divide = Math.floor(valor / 100);
-      start += divide;
-      item.innerText = start;
-      if (start > valor) {
-        item.innerText = item.innerHTML;
-        clearInterval(timer);
+  addMudou() {
+    this.observador = new MutationObserver((mutacao) => {
+      if (mutacao[0].target.classList.contains(this.ObserveClass)) {
+        this.observador.disconnect();
+        this.animaNumero();
       }
-    }, 30 * Math.random());
-  });
-}
+    });
+    this.observador.observe(this.section, { attributes: true });
+  }
 
-let observador;
-
-function mudou(mutacao) {
-  if (mutacao[0].target.classList.contains("ativo")) {
-    observador.disconnect();
-    animaNumero();
+  init() {
+    if (this.section && this.numeros && this.ObserveClass) {
+      this.addMudou();
+    }
+    return this;
   }
 }
 
-observador = new MutationObserver(mudou);
+// export default function numeros() {}
 
-observador.observe(sectionTarget, { attributes: true });
+// const sectionTarget = document.querySelector(".numeros");
+// function animaNumero() {
+//   const numero = document.querySelectorAll("[data-numero]");
+
+//   numero.forEach((item) => {
+//     const valor = +item.innerText;
+
+//     let start = 0;
+//     const timer = setInterval(() => {
+//       const divide = Math.floor(valor / 100);
+//       start += divide;
+//       item.innerText = start;
+//       if (start > valor) {
+//         item.innerText = item.innerHTML;
+//         clearInterval(timer);
+//       }
+//     }, 30 * Math.random());
+//   });
+// }
+
+// let observador;
+
+// function mudou(mutacao) {
+//   console.log(mutacao);
+//   if (mutacao[0].target.classList.contains("ativo")) {
+//     observador.disconnect();
+//     animaNumero();
+//   }
+// }
+
+// observador = new MutationObserver(mudou);
+
+// observador.observe(sectionTarget, { attributes: true });
