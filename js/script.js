@@ -38,7 +38,7 @@ const toltip = new Toltip("[data-toltip]");
 toltip.init();
 
 funcionamento();
-compraBitcoin();
+compraBitcoin("https://blockchain.info/ticker", ".compraBitcoin");
 mobile();
 numeros();
 dropMenu();

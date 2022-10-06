@@ -1,8 +1,8 @@
-export default function compraBitcoin() {
-  const spanBit = document.querySelector(".compraBitcoin");
+export default function compraBitcoin(url, target) {
+  const spanBit = document.querySelector(target);
   const tiraCentavos = /,\d+/g;
   function ativa() {
-    fetch("https://blockchain.info/ticker")
+    fetch(url)
       .then((r) => {
         r.json().then((bit) => {
           const {
