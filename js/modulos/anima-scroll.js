@@ -1,19 +1,32 @@
-export default function anima() {
-  const section = document.querySelectorAll("[data-atributes='js-scroll']");
-  section[0].classList.add("ativo");
+export default class Scrollnima {
+  constructor(section, chave) {
+    this.section = document.querySelectorAll(section);
+    this.TelaMetade = window.innerHeight * 0.6;
+    this.ativa = chave;
 
-  const tela = window.innerHeight * 0.6;
+    this.animaScroll = this.animaScroll.bind(this);
+  }
 
-  function animaScroll() {
-    section.forEach((item) => {
+  AtivaPrimeiro() {
+    this.section[0].classList.add("ativo");
+  }
+
+  animaScroll() {
+    this.section.forEach((item) => {
       const secTop = item.getBoundingClientRect().top;
-      if (secTop < tela) {
+      if (secTop < this.TelaMetade) {
         item.classList.add("ativo");
-      } else if (item.classList.contains("ativo") && secTop > tela + 250) {
+      } else if (
+        item.classList.contains("ativo") &&
+        secTop > this.TelaMetade + 250
+      ) {
         item.classList.remove("ativo");
       }
     });
   }
 
-  window.addEventListener("scroll", animaScroll);
+  init() {
+    this.AtivaPrimeiro();
+    window.addEventListener("scroll", this.animaScroll);
+  }
 }
