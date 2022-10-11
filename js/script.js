@@ -1,7 +1,7 @@
 import substituiJs from "./modulos/trocajs.js";
 import addData from "./modulos/dataset.js";
 import ScrollSuave from "./modulos/scroll-suave.js";
-import anima from "./modulos/anima-scroll.js";
+import ScrollAnima from "./modulos/anima-scroll.js";
 import Accordion from "./modulos/accordion.js";
 import Tabnav from "./modulos/tabnav.js";
 import Modal from "./modulos/modal.js";
@@ -46,4 +46,5 @@ const numero = new Numeros(".numeros", "[data-numero]", "ativo");
 numero.init();
 
 dropMenu();
-anima();
+const animaScroll = new ScrollAnima("[data-atributes='js-scroll']", "ativo");
+animaScroll.init();

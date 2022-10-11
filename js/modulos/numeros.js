@@ -6,7 +6,6 @@ export default class numeros {
   }
 
   animaNumero() {
-    console.log(this.numeros);
     this.numeros.forEach((item) => {
       const valor = +item.innerText;
 
