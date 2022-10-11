@@ -4,29 +4,40 @@ export default class Scrollnima {
     this.TelaMetade = window.innerHeight * 0.6;
     this.ativa = chave;
 
-    this.animaScroll = this.animaScroll.bind(this);
+    this.verificaDistancia = this.verificaDistancia.bind(this);
   }
 
-  AtivaPrimeiro() {
-    this.section[0].classList.add("ativo");
+  getDistancia() {
+    this.distance = Array.from(this.section).map((sessao) => {
+      const topo = sessao.offsetTop;
+      return {
+        element: sessao,
+        offset: Math.floor(topo - this.TelaMetade),
+      };
+    });
   }
 
-  animaScroll() {
-    this.section.forEach((item) => {
-      const secTop = item.getBoundingClientRect().top;
-      if (secTop < this.TelaMetade) {
-        item.classList.add("ativo");
-      } else if (
-        item.classList.contains("ativo") &&
-        secTop > this.TelaMetade + 250
-      ) {
-        item.classList.remove("ativo");
+  verificaDistancia() {
+    const scroll = window.pageYOffset;
+    this.distance.forEach((item) => {
+      if (scroll > item.offset) {
+        item.element.classList.add(this.ativa);
+      } else if (item.element.classList.contains(this.ativa)) {
+        item.element.classList.remove(this.ativa);
       }
     });
   }
 
+  AtivaPrimeiro() {
+    this.section[0].classList.add(this.ativa);
+  }
+
   init() {
-    this.AtivaPrimeiro();
-    window.addEventListener("scroll", this.animaScroll);
+    if (this.section.length) {
+      this.getDistancia();
+      this.AtivaPrimeiro();
+      window.addEventListener("scroll", this.verificaDistancia);
+    }
+    return this;
   }
 }
