@@ -5,6 +5,7 @@ export default class Scrollnima {
     this.ativa = chave;
 
     this.verificaDistancia = this.verificaDistancia.bind(this);
+    this.debbounce = this.debbounce.bind(this);
   }
 
   getDistancia() {
@@ -31,6 +32,20 @@ export default class Scrollnima {
     });
   }
 
+  debbounce() {
+    let timer;
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(() => {
+        this.verificaDistancia();
+      }, 50);
+    };
+  }
+
   AtivaPrimeiro() {
     this.section[0].classList.add(this.ativa);
   }
@@ -39,7 +54,7 @@ export default class Scrollnima {
     if (this.section.length) {
       this.getDistancia();
       this.AtivaPrimeiro();
-      window.addEventListener("scroll", this.verificaDistancia);
+      window.addEventListener("scroll", this.debbounce());
     }
     return this;
   }
