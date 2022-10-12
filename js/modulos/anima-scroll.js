@@ -22,7 +22,10 @@ export default class Scrollnima {
     this.distance.forEach((item) => {
       if (scroll > item.offset) {
         item.element.classList.add(this.ativa);
-      } else if (item.element.classList.contains(this.ativa)) {
+      } else if (
+        item.element.classList.contains(this.ativa) &&
+        scroll + 200 < item.offset
+      ) {
         item.element.classList.remove(this.ativa);
       }
     });
