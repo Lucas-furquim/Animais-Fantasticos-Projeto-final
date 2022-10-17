@@ -1,21 +1,35 @@
-export default function mobile() {
-  const RespMobile = document.querySelector('[data-menu="lista"]');
-  const btn = document.querySelector('[data-menu="mobile"]');
-  const html = document.documentElement;
-  let x = 0;
+export default class Mobile {
+  constructor(RespMobile, btn, htmlPag) {
+    this.RespMobile = document.querySelector(RespMobile);
+    this.btn = document.querySelector(btn);
+    this.html = htmlPag;
+  }
 
-  btn.addEventListener("click", () => {
-    RespMobile.classList.toggle("ativo");
-    btn.classList.toggle("ativo");
-  });
+  MobileBtn() {
+    this.btn.addEventListener("click", () => {
+      this.RespMobile.classList.toggle("ativo");
+      this.btn.classList.toggle("ativo");
+    });
+  }
 
-  html.addEventListener("click", () => {
-    if (x === 1) {
-      RespMobile.classList.remove("ativo");
-      btn.classList.remove("ativo");
-      x = 0;
-    } else {
-      x += 1;
+  CiqueFora() {
+    let x = 0;
+    this.html.addEventListener("click", () => {
+      if (x === 1) {
+        this.RespMobile.classList.remove("ativo");
+        this.btn.classList.remove("ativo");
+        x = 0;
+      } else {
+        x += 1;
+      }
+    });
+  }
+
+  init() {
+    if (this.RespMobile) {
+      this.MobileBtn();
+      this.CiqueFora();
     }
-  });
+    return this;
+  }
 }
