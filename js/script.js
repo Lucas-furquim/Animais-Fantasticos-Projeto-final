@@ -48,6 +48,13 @@ mobile.init();
 const numero = new Numeros(".numeros", "[data-numero]", "ativo");
 numero.init();
 
-dropMenu();
+// dropMenu();
+const dropmenu = new DropMenu(
+  "[data-dropmenu]",
+  ".sobre",
+  document.documentElement
+);
+dropmenu.init();
+
 const animaScroll = new ScrollAnima("[data-atributes='js-scroll']", "ativo");
 animaScroll.init();

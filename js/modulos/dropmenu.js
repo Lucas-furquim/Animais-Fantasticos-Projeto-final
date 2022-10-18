@@ -1,26 +1,35 @@
-export default function dropMenu() {
-  const dropmenu = document.querySelector("[data-dropmenu]");
-  const elementoSobre = document.querySelector(".sobre");
-  const html = document.documentElement;
+export default class dropMenu {
+  constructor(section, elemento, html) {
+    this.section = document.querySelector(section);
+    this.elemento = document.querySelector(elemento);
+    this.html = html;
 
-  const clique = function clique(e) {
+    this.clique = this.clique.bind(this);
+    this.htmlClique = this.htmlClique.bind(this);
+  }
+
+  clique(e) {
     e.preventDefault();
     this.classList.toggle("ativo");
-  };
+  }
 
-  ["touchstart", "click"].forEach((eventos) => {
-    dropmenu.addEventListener(eventos, clique);
-  });
-
-  function htmlClique(e) {
+  htmlClique(e) {
     e.preventDefault();
     const sobre = e.target;
-    if (sobre !== elementoSobre) {
-      dropmenu.classList.remove("ativo");
+    if (sobre !== this.elemento) {
+      this.dropmenu.classList.remove("ativo");
     }
   }
 
-  ["touchstart", "click"].forEach((eventos) => {
-    html.addEventListener(eventos, htmlClique);
-  });
+  addEventos() {
+    this.section.addEventListener("click", this.clique);
+    this.html.addEventListener("click", this.htmlClique);
+  }
+
+  init() {
+    if (this.section.length) {
+      this.addEventos();
+    }
+    return this;
+  }
 }
