@@ -6,7 +6,13 @@ export default class funcionamento {
   }
 
   HorarioComercial() {
-    if (this.horas >= 8 && this.horas < 18 && this.dias <= 5 && this.dias >= 1) {
+    console.log(this.horas, this.dias);
+    if (
+      this.horas >= 8 &&
+      this.horas < 18 &&
+      this.dias <= 5 &&
+      this.dias >= 1
+    ) {
       this.fechar.classList.add("ativo");
     } else {
       this.fechar.classList.remove("ativo");
@@ -14,7 +20,7 @@ export default class funcionamento {
   }
 
   init() {
-    if (this.fechar.lenght) {
+    if (this.fechar) {
       this.HorarioComercial();
     }
     return this;
