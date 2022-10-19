@@ -6,7 +6,6 @@ export default class funcionamento {
   }
 
   HorarioComercial() {
-    console.log(this.horas, this.dias);
     if (
       this.horas >= 8 &&
       this.horas < 18 &&
