@@ -9,7 +9,7 @@ import Toltip from "./modulos/toltip.js";
 import DropMenu from "./modulos/dropmenu.js";
 import Mobile from "./modulos/mobile.js";
 import Numeros from "./modulos/numeros.js";
-import funcionamento from "./modulos/tempo.js";
+import Funcionamento from "./modulos/tempo.js";
 import compraBitcoin from "./modulos/bitcoin.js";
 
 addData();
@@ -37,7 +37,14 @@ modal.init();
 const toltip = new Toltip("[data-toltip]");
 toltip.init();
 
-funcionamento();
+// funcionamento
+const horario = new Funcionamento(
+  ".dados li:last-child",
+  new Date().getDay(),
+  new Date().getHours()
+);
+horario.init();
+
 compraBitcoin("https://blockchain.info/ticker", ".compraBitcoin");
 
 // mobile();
