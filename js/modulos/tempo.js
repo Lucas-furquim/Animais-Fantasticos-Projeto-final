@@ -1,11 +1,22 @@
-export default function funcionamento() {
-  const fechamento = document.querySelector(".dados li:last-child");
-  const dias = new Date().getDay();
-  const horas = new Date().getHours();
+export default class funcionamento {
+  constructor(fechamento, dias, hora) {
+    this.fechar = document.querySelector(fechamento);
+    this.dias = dias;
+    this.horas = hora;
+  }
 
-  if (horas >= 8 && horas < 18 && dias <= 5 && dias >= 1) {
-    fechamento.classList.add("ativo");
-  } else {
-    fechamento.classList.remove("ativo");
+  HorarioComercial() {
+    if (this.horas >= 8 && this.horas < 18 && this.dias <= 5 && this.dias >= 1) {
+      this.fechar.classList.add("ativo");
+    } else {
+      this.fechar.classList.remove("ativo");
+    }
+  }
+
+  init() {
+    if (this.fechar.lenght) {
+      this.HorarioComercial();
+    }
+    return this;
   }
 }
