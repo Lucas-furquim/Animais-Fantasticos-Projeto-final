@@ -11,6 +11,7 @@ import Mobile from "./modulos/mobile.js";
 import Numeros from "./modulos/numeros.js";
 import Funcionamento from "./modulos/tempo.js";
 import compraBitcoin from "./modulos/bitcoin.js";
+import Slide from "./modulos/slide.js";
 
 addData();
 substituiJs();
@@ -69,3 +70,11 @@ dropmenu.init();
 
 const animaScroll = new ScrollAnima("[data-atributes='js-scroll']", "ativo");
 animaScroll.init();
+
+// slide
+
+window.addEventListener("load", () => {
+  const desliza = new Slide(".slide", ".container", ".btnNav");
+  desliza.init();
+  desliza.addControl(".customControls");
+});
